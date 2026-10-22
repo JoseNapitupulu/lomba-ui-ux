@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Modul Kerja Parhalaan – Study2Challenge 2026</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Public+Sans:wght@400;500;600&display=swap">
+<style>
+:root{--bg:#F2F6F3;--surface:#FFFFFF;--ink:#10231F;--muted:#4C6159;--line:#CBD8D1;--water:#1F6F8B;--sun:#E3A81C;--sunbg:#FBF0CF;--ok:#2E7D5B;--hdr:#F2F6F3;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0E1A18;--surface:#15272A;--ink:#E6F0EC;--muted:#9DB3AB;--line:#2B4640;--water:#6FC1DB;--sun:#F0BC3A;--sunbg:#3A3115;--ok:#5CC596;--hdr:#0E1A18;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0E1A18;--surface:#15272A;--ink:#E6F0EC;--muted:#9DB3AB;--line:#2B4640;--water:#6FC1DB;--sun:#F0BC3A;--sunbg:#3A3115;--ok:#5CC596;--hdr:#0E1A18;color-scheme:dark}
+html{height:100%;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;min-height:100%;background:var(--bg);color:var(--ink);font:400 16px/1.65 "Public Sans",system-ui,sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--hdr);z-index:10}
+h1,h2,h3{font-family:"Bricolage Grotesque","Public Sans",system-ui,sans-serif;line-height:1.15;margin:0}
+.wrap{max-width:760px;margin:0 auto;padding:0 18px}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);background:var(--hdr);border-bottom:1px solid var(--line);z-index:9}
+.bar{height:5px;background:var(--line)}
+.bar i{display:block;height:100%;width:0;background:var(--ok);transition:width .3s}
+.nav{display:flex;gap:6px;overflow-x:auto;padding:10px 18px;max-width:760px;margin:0 auto;align-items:center}
+.nav a{white-space:nowrap;text-decoration:none;color:var(--ink);font-size:14px;font-weight:600;padding:6px 12px;border:1px solid var(--line);border-radius:99px;background:var(--surface)}
+.nav a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid var(--water);outline-offset:2px}
+.nav .pct{margin-left:auto;font-size:14px;color:var(--muted);white-space:nowrap;padding-left:8px}
+.hero{padding:44px 0 26px}
+.hero h1{font-size:clamp(34px,8vw,56px);font-weight:800;letter-spacing:-.02em}
+.hero p{max-width:60ch;color:var(--muted);font-size:18px;margin:14px 0 0}
+.days{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:4px;margin:28px 0 8px}
+.days a{text-decoration:none;color:var(--ink);text-align:center;border-radius:8px;padding:10px 0 8px;background:var(--surface);border:1px solid var(--line);font-weight:600;font-size:18px;line-height:1.1}
+.days a small{display:block;font:500 11px/1.2 "Public Sans",sans-serif;color:var(--muted);margin-top:4px}
+.days .r{border-top:5px solid var(--water)}.days .a{border-top:5px solid var(--sun)}.days .p{border-top:5px solid var(--ok)}
+.legend{font-size:14px;color:var(--muted);display:flex;gap:14px;flex-wrap:wrap}
+.legend b{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+section.bab{padding:34px 0 10px;border-top:1px solid var(--line);margin-top:26px}
+section.bab h2{font-size:clamp(26px,5vw,34px);font-weight:800}
+.when{display:inline-block;margin:10px 0 0;font-weight:600;font-size:14px;color:var(--ink);background:var(--sunbg);padding:3px 10px;border-radius:6px}
+.goal{margin:14px 0 18px;color:var(--muted);max-width:62ch}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:6px 16px;margin:12px 0}
+.check{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);cursor:pointer;align-items:flex-start}
+.check:last-child{border-bottom:0}
+.check input{width:22px;height:22px;margin-top:2px;flex:none;accent-color:var(--ok)}
+.check input:checked+span{color:var(--muted);text-decoration:line-through}
+.out{border-left:5px solid var(--ok);background:var(--surface);padding:12px 16px;border-radius:0 12px 12px 0;margin:14px 0}
+.out b{display:block;margin-bottom:2px}
+details{background:var(--surface);border:1px solid var(--line);border-radius:12px;margin:10px 0;padding:0 16px}
+summary{cursor:pointer;font-weight:600;padding:13px 0}
+details[open] summary{border-bottom:1px solid var(--line);margin-bottom:12px}
+.tpl{white-space:pre-wrap;font:400 15px/1.6 "Public Sans",sans-serif;background:var(--bg);border:1px dashed var(--line);border-radius:8px;padding:12px;margin:0 0 12px}
+button.cp{font:600 14px "Public Sans",sans-serif;background:var(--water);color:#fff;border:0;border-radius:8px;padding:8px 14px;cursor:pointer;margin-bottom:14px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) button.cp{color:#0E1A18}}
+.note{background:var(--sunbg);border-radius:12px;padding:12px 16px;margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:15px}
+.scroll{overflow-x:auto}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--bg)}
+footer{padding:40px 0 60px;color:var(--muted);font-size:14px}
+@media (max-width:560px){.days a{font-size:15px}.days a small{font-size:10px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.bar i{transition:none}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="bar"><i id="fill"></i></div>
+  <nav class="nav" aria-label="Daftar bab">
+    <a href="#bab1">Riset</a><a href="#bab2">Analisis</a><a href="#bab3">Ide &amp; scope</a><a href="#bab4">Prototipe</a><a href="#bab5">Uji coba</a><a href="#bab6">Proposal</a>
+    <span class="pct" id="pct">0% selesai</span>
+  </nav>
+</header>
+
+<main class="wrap">
+<div class="hero">
+  <h1>Modul kerja Parhalaan</h1>
+  <p>Panduan langkah demi langkah dari kuesioner sampai unggah proposal Study2Challenge 2026. Centang setiap langkah yang sudah selesai. Kemajuan tersimpan di perangkat ini.</p>
+  <div class="days" aria-label="Jadwal 22 sampai 30 Oktober">
+    <a class="r" href="#bab1">22<small>Okt</small></a><a class="r" href="#bab1">23<small>Okt</small></a>
+    <a class="a" href="#bab2">24<small>Okt</small></a><a class="a" href="#bab2">25<small>Okt</small></a><a class="a" href="#bab3">26<small>Okt</small></a>
+    <a class="p" href="#bab4">27<small>Okt</small></a><a class="p" href="#bab4">28<small>Okt</small></a><a class="p" href="#bab5">29<small>Okt</small></a>
+    <a class="p" href="#bab6">30<small>Okt</small></a>
+  </div>
+  <div class="legend"><span><b style="background:var(--water)"></b>Riset</span><span><b style="background:var(--sun)"></b>Analisis &amp; ide</span><span><b style="background:var(--ok)"></b>Membuat &amp; mengirim</span></div>
+</div>
+
+<div class="note"><b>Bagi peran dulu (5 menit).</b> Satu orang memegang riset (kuesioner dan data), satu orang memegang desain Figma, satu orang memegang proposal. Bila tim hanya berdua, gabungkan dua peran. Semua orang tetap ikut membaca hasil akhir, karena juri bisa bertanya ke siapa saja di babak final.</div>
+
+<section class="bab" id="bab1">
+  <h2>Bab 1. Riset pengguna</h2>
+  <span class="when">22–23 Oktober</span>
+  <p class="goal">Tujuan: memahami kebutuhan masyarakat dalam menerima informasi cuaca, kondisi lingkungan, dan risiko bencana sebelum merancang solusi. Kuesioner singkat sudah cukup, asal terarah dan didukung data sekunder.</p>
+  <div class="card">
+    <label class="check"><input type="checkbox"><span>Minta izin dosen atau kemahasiswaan untuk menyebar kuesioner anonim. Cukup pesan singkat atau surat pengantar.</span></label>
+    <label class="check"><input type="checkbox"><span>Buat Google Form dari draf 10 pertanyaan. Pakai progress bar dan jangan minta nama atau nomor HP.</span></label>
+    <label class="check"><input type="checkbox"><span>Uji form ke 2–3 teman. Perbaiki kalimat yang membingungkan.</span></label>
+    <label class="check"><input type="checkbox"><span>Sebar melalui lingkungan kampus dan jaringan yang diizinkan. Target 20–30 respons. Jika responden mayoritas sivitas IT Del, catat bahwa hasil ini merupakan riset awal dan bukan representasi seluruh masyarakat.</span></label>
+    <label class="check"><input type="checkbox"><span>Kumpulkan 3–5 sumber data sekunder: BMKG (cuaca dan peringatan dini), BNPB/BPBD atau sumber resmi lain (bencana dan risiko), serta BPS/pemerintah daerah (kondisi wilayah). Catat judul, tahun, dan tautannya.</span></label>
+    <label class="check"><input type="checkbox"><span>Tulis keterbatasan riset: jumlah responden, siapa yang terjangkau, siapa yang tidak.</span></label>
+  </div>
+  <div class="out"><b>Hasil bab ini</b>Tautan form, ekspor respons (spreadsheet), daftar sumber data, satu paragraf keterbatasan.</div>
+</section>
+
+<section class="bab" id="bab2">
+  <h2>Bab 2. Analisis dan merumuskan masalah</h2>
+  <span class="when">24–25 Oktober</span>
+  <p class="goal">Tujuan: mengubah jawaban responden menjadi temuan, kelompok pengguna, dan satu masalah utama yang menjadi dasar keputusan desain.</p>
+  <div class="card">
+    <label class="check"><input type="checkbox"><span>Rekap setiap pertanyaan menjadi persentase. Buat 3–4 grafik sederhana yang menunjukkan sumber informasi, kesulitan memahami peringatan, kebutuhan informasi, dan minat terhadap solusi.</span></label>
+    <label class="check"><input type="checkbox"><span>Tulis 3–5 temuan utama dengan angka. Contoh: “60% responden merasa sulit memahami informasi peringatan” atau temuan aktual dari hasil survei.</span></label>
+    <label class="check"><input type="checkbox"><span>Buat 2–3 persona berdasarkan pola kebutuhan, misalnya warga umum, mahasiswa/pekerja, dan pengguna dengan kebutuhan khusus seperti petani. Jangan menjadikan petani sebagai satu-satunya pengguna.</span></label>
+    <label class="check"><input type="checkbox"><span>Tulis problem statement dan 3 pertanyaan “How might we”.</span></label>
+    <label class="check"><input type="checkbox"><span>Gambar user journey sederhana: kondisi sekarang saat ada bahaya, lalu kondisi dengan Parhalaan.</span></label>
+  </div>
+  <details><summary>Templat persona</summary>
+<div class="tpl" id="t1">Nama samaran, usia, aktivitas/pekerjaan:
+Wilayah tempat tinggal atau daerah asal:
+Perangkat dan akses internet:
+Kebiasaan sekarang (cara mendapatkan informasi cuaca/bencana):
+Masalah terbesar (ambil dari temuan kuesioner):
+Informasi atau tindakan yang paling dibutuhkan:
+Hal yang membuatnya ragu menggunakan aplikasi:</div>
+<button class="cp" data-t="t1">Salin templat</button></details>
+  <details><summary>Templat problem statement</summary>
+<div class="tpl" id="t2">[Persona] membutuhkan cara untuk [kebutuhan], karena [temuan dengan angka dari kuesioner atau data resmi].
+
+Contoh pertanyaan HMW:
+- Bagaimana kita membantu masyarakat memahami risiko cuaca atau bencana di sekitar mereka?
+- Bagaimana kita mengubah informasi peringatan menjadi tindakan yang mudah dipahami?
+- Bagaimana masyarakat dapat melaporkan kondisi lingkungan dengan cepat dan sederhana?
+- Bagaimana informasi tetap berguna ketika koneksi internet terbatas?</div>
+<button class="cp" data-t="t2">Salin templat</button></details>
+  <div class="out"><b>Hasil bab ini</b>Rekap data dan grafik, daftar temuan, persona, problem statement, user journey.</div>
+</section>
+
+<section class="bab" id="bab3">
+  <h2>Bab 3. Ide dan batas fitur</h2>
+  <span class="when">26 Oktober</span>
+  <p class="goal">Tujuan: memilih fitur yang benar-benar dibutuhkan masyarakat. Fokuskan solusi pada alur <b>Tahu → Paham → Sigap → Lapor</b>, lalu jadikan kebutuhan khusus seperti pertanian sebagai bagian pendukung.</p>
+  <div class="card">
+    <label class="check"><input type="checkbox"><span>Tulis semua ide fitur: informasi cuaca, peringatan risiko, peta risiko, panduan tindakan, laporan warga, notifikasi, kondisi air, dan informasi pertanian.</span></label>
+    <label class="check"><input type="checkbox"><span>Urutkan dengan pola Must, Should, Could. Dasarnya jawaban pertanyaan 7 di kuesioner, bukan selera tim.</span></label>
+    <label class="check"><input type="checkbox"><span>Tetapkan 3–4 fitur inti. Fitur lain masuk bagian “rencana pengembangan” di proposal.</span></label>
+    <label class="check"><input type="checkbox"><span>Gambar satu user flow utama: buka aplikasi → lihat kondisi/risiko → pahami dampaknya → lakukan tindakan → laporkan kondisi jika diperlukan.</span></label>
+    <label class="check"><input type="checkbox"><span>Putuskan nama final (Parhalaan atau SigapDesa) dan pakai nama yang sama di proposal, Figma, dan slide.</span></label>
+    <label class="check"><input type="checkbox"><span>Tulis jujur sumber informasi dan tingkat kepastian: data/prakiraan dari sumber resmi disajikan ulang secara sederhana. Jika ada prediksi risiko, jelaskan bahwa itu estimasi risiko, bukan kepastian kejadian.</span></label>
+  </div>
+  <div class="out"><b>Hasil bab ini</b>Daftar fitur berprioritas, diagram user flow, nama final.</div>
+</section>
+
+<section class="bab" id="bab4">
+  <h2>Bab 4. Prototipe di Figma</h2>
+  <span class="when">27–28 Oktober</span>
+  <p class="goal">Tujuan: prototipe yang bisa diklik dari layar ke layar, konsisten, dan mudah dipakai oleh pengguna dengan kebutuhan yang berbeda.</p>
+  <div class="card">
+    <label class="check"><input type="checkbox"><span>Gambar wireframe di kertas untuk 6–8 layar, lalu bagi tugas antar anggota.</span></label>
+    <label class="check"><input type="checkbox"><span>Buat style guide di Figma: 2 warna utama dan 1 aksen, 2 jenis huruf, teks minimal 16 px, tombol besar, kontras tinggi.</span></label>
+    <label class="check"><input type="checkbox"><span>Buat komponen yang dipakai ulang: tombol, kartu, bilah navigasi, ikon dengan label teks.</span></label>
+    <label class="check"><input type="checkbox"><span>Desain layar inti (lihat daftar di bawah).</span></label>
+    <label class="check"><input type="checkbox"><span>Hubungkan layar dengan prototype di Figma dan coba mode Present dari awal sampai akhir.</span></label>
+    <label class="check"><input type="checkbox"><span>Cek aksesibilitas: bahasa sederhana, ikon selalu bersama teks, status bahaya tidak hanya dibedakan lewat warna, ada ruang untuk bahasa daerah.</span></label>
+    <label class="check"><input type="checkbox"><span>Atur berbagi ke “anyone with the link can view” dan buka dari akun lain untuk memastikan.</span></label>
+  </div>
+  <details><summary>Daftar layar yang disarankan</summary>
+<div class="scroll"><table>
+<tr><th>Layar</th><th>Isi utama</th></tr>
+<tr><td>Pilih lokasi</td><td>Desa atau kecamatan, izin lokasi</td></tr>
+<tr><td>Beranda</td><td>Kondisi hari ini, risiko utama di sekitar, dan 2 tindakan yang disarankan</td></tr>
+<tr><td>Detail risiko</td><td>Apa yang terjadi, tingkat risiko, alasan singkat, dan “Lakukan sekarang”</td></tr>
+<tr><td>Peta</td><td>Risiko dan laporan kondisi lingkungan di sekitar</td></tr>
+<tr><td>Lapor warga</td><td>Pilih jenis kondisi (api/asap, banjir, kekurangan air, dll.), lokasi, foto opsional, kirim</td></tr>
+<tr><td>Notifikasi</td><td>Riwayat peringatan dan pengaturan penerimaan</td></tr>
+<tr><td>Panduan</td><td>Tindakan praktis untuk rumah tangga, perjalanan, aktivitas luar ruang, dan pertanian</td></tr>
+</table></div></details>
+  <div class="out"><b>Hasil bab ini</b>File Figma dengan style guide, 6–8 layar yang tersambung, tautan publik yang sudah dites.</div>
+</section>
+
+<section class="bab" id="bab5">
+  <h2>Bab 5. Uji coba</h2>
+  <span class="when">29 Oktober</span>
+  <p class="goal">Tujuan: menemukan bagian yang membingungkan sebelum juri menemukannya. Cukup 3–5 orang, dan itu sudah cukup untuk menangkap sebagian besar masalah.</p>
+  <div class="card">
+    <label class="check"><input type="checkbox"><span>Siapkan 3–4 tugas lintas kebutuhan. Contoh: “Cari tahu risiko cuaca minggu ini”, “Cari tindakan saat ada peringatan banjir”, “Laporkan asap/kebakaran di sekitar”, “Atur notifikasi peringatan”.</span></label>
+    <label class="check"><input type="checkbox"><span>Uji ke 3–5 orang di kampus. Beri tugas, lalu diam dan amati. Jangan membantu atau menjelaskan.</span></label>
+    <label class="check"><input type="checkbox"><span>Catat tiap kali orang ragu, salah ketuk, atau bertanya.</span></label>
+    <label class="check"><input type="checkbox"><span>Kelompokkan masalah, lalu perbaiki 3–5 yang paling sering muncul.</span></label>
+    <label class="check"><input type="checkbox"><span>Simpan tangkapan layar sebelum dan sesudah revisi untuk proposal.</span></label>
+  </div>
+  <div class="out"><b>Hasil bab ini</b>Tabel temuan uji (masalah, jumlah orang, perbaikan) dan contoh sebelum-sesudah.</div>
+</section>
+
+<section class="bab" id="bab6">
+  <h2>Bab 6. Proposal dan unggah</h2>
+  <span class="when">30 Oktober, batas 23.59 WIB</span>
+  <p class="goal">Tujuan: proposal yang memperlihatkan alur berpikir dari masalah ke solusi, dan semua anggota paham isinya.</p>
+  <div class="card">
+    <label class="check"><input type="checkbox"><span>Cocokkan proposal dengan bagian output dan kriteria penilaian di FAQ situs lomba. Bagian itu perlu dibaca langsung karena belum terbuka di halaman yang kami lihat.</span></label>
+    <label class="check"><input type="checkbox"><span>Pastikan struktur proposal ada (lihat daftar di bawah) dan angka dari kuesioner tercantum.</span></label>
+    <label class="check"><input type="checkbox"><span>Masukkan tangkapan layar prototipe dan tautan Figma. Nama aplikasi harus sama di semua tempat.</span></label>
+    <label class="check"><input type="checkbox"><span>Tulis jujur metode dan keterbatasan riset. Juri lebih menghargai hal ini daripada klaim berlebihan.</span></label>
+    <label class="check"><input type="checkbox"><span>Semua anggota membaca proposal sampai habis dan bisa menjelaskan tiap bagian tanpa melihat teks.</span></label>
+    <label class="check"><input type="checkbox"><span>Ekspor PDF, cek ukuran dan tampilan, lalu unggah target pukul 20.00. Jangan menunggu menit terakhir.</span></label>
+    <label class="check"><input type="checkbox"><span>Buka tautan Figma dari akun lain atau mode penyamaran untuk memastikan juri bisa mengaksesnya.</span></label>
+  </div>
+  <details><summary>Struktur proposal yang disarankan</summary>
+<div class="tpl">1. Latar belakang: risiko cuaca/bencana 2026 dan kaitan dengan SDG 13
+2. Rumusan masalah dan tujuan
+3. Riset pengguna: metode, jumlah responden, temuan utama, data sekunder, keterbatasan
+4. Persona dan problem statement
+5. Solusi: alur Tahu → Paham → Sigap → Lapor dan fitur inti
+6. Rancangan UI/UX: user flow, style guide, layar utama, tautan Figma
+7. Hasil uji coba dan revisi
+8. Dampak yang diharapkan dan rencana pengembangan
+9. Daftar pustaka</div></details>
+  <div class="out"><b>Hasil bab ini</b>File PDF proposal yang terunggah dan tautan Figma yang terbuka untuk umum.</div>
+</section>
+
+<footer>Setelah 30 Oktober: penjurian awal 31 Oktober–12 November, pengumuman Top 5 pada 13 November, presentasi final 21 November (10 menit presentasi dan 20 menit tanya jawab). Simpan semua catatan riset dan uji coba untuk bahan menjawab pertanyaan juri.</footer>
+</main>
+
+<script>
+(function(){
+  var boxes=[].slice.call(document.querySelectorAll('.check input'));
+  var KEY='parhalaan-modul-v1', state={};
+  try{state=JSON.parse(localStorage.getItem(KEY)||'{}')||{}}catch(e){state={}}
+  function update(){
+    var n=boxes.filter(function(b){return b.checked}).length;
+    var p=Math.round(n/boxes.length*100);
+    document.getElementById('fill').style.width=p+'%';
+    document.getElementById('pct').textContent=p+'% selesai';
+  }
+  boxes.forEach(function(b,i){
+    b.checked=!!state[i];
+    b.addEventListener('change',function(){
+      state[i]=b.checked;
+      try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}
+      update();
+    });
+  });
+  update();
+  [].forEach.call(document.querySelectorAll('.cp'),function(btn){
+    btn.addEventListener('click',function(){
+      var t=document.getElementById(btn.getAttribute('data-t')).innerText;
+      var done=function(){btn.textContent='Tersalin';setTimeout(function(){btn.textContent='Salin templat'},1500)};
+      try{navigator.clipboard.writeText(t).then(done,function(){})}catch(e){}
+    });
+  });
+})();
+</script>
+</body>
+</html>
